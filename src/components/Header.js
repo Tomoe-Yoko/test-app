@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <>
       <header className="flex">
         <h1>
-          <a href="">Blog</a>
+          <Link to="/">Blog</Link>
         </h1>
         <p>
-          <a href="">お問合せ</a>
+          <Link to="/contact">お問合せ</Link>
         </p>
       </header>
     </>
