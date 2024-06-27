@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Page01 from "./components/Page01";
+import Page from "./components/Page";
 import Contact from "./components/Contact";
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/page01" element={<Page01 />} />
+        <Route path="/:id" element={<Page />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>

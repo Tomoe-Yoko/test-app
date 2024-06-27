@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Page01 from "./Page01";
 import { posts } from "../data/post";
 
 export default function Home() {
@@ -9,7 +8,8 @@ export default function Home() {
       <ul>
         {posts.map((post) => (
           <li key={post.id} className="postwrap">
-            <Link to="/page01">
+            <Link to={`/${post.id}`}>
+              {/* //URL */}
               <div className="flex">
                 <p>{new Date(post.createdAt).toLocaleDateString()}</p>
                 <div className="categories flex">
