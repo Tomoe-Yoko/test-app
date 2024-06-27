@@ -34,8 +34,8 @@ header {
 
 /* ///////Home */
 .postwrap {
-  width: 90%;
-  margin: 5rem auto;
+  width: 50%;
+  margin: 3rem auto;
   outline: 1px solid #ccc;
   padding: 1rem;
 }
