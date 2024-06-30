@@ -10,9 +10,9 @@ export default function Home() {
           <li key={post.id} className="postwrap">
             <Link to={`/${post.id}`}>
               {/* //URL */}
-              <div className="flex">
+              <div className="flexbox">
                 <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-                <div className="categories flex">
+                <div className="categories flexbox">
                   {post.categories.map((category, index) => (
                     <div key={index}>{category}</div>
                   ))}

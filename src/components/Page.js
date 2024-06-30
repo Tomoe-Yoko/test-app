@@ -15,18 +15,25 @@ const Page = () => {
   //   return <div>記事が見つかりませんでした</div>;
   // }
   return post ? (
-    <div>
-      <h2>{post.title}</h2>
+    <div className="w-9/12 mx-auto my-10 max-w-screen-md">
+      {/* <h2 className="p-6 font-bold text-xl">{post.title}</h2> */}
       <img src={post.thumbnailUrl} alt={post.title} />
-      <p> {new Date(post.createdAt).toLocaleDateString()}</p>
-      <div>
-        <ul>
-          {post.categories.map((category, index) => (
-            <li key={index}>{category}</li>
-          ))}
-        </ul>
+      <div className="flex mt-4">
+        <p> {new Date(post.createdAt).toLocaleDateString()}</p>
+        <div>
+          <ul className="flex">
+            {post.categories.map((category, index) => (
+              <li
+                key={index}
+                className="p-1 m-1 text-blue-700 border border-solid border-blue-700 rounded"
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div>{renderContent(post.content)}</div>
+      <div className="mt-4">{renderContent(post.content)}</div>
     </div>
   ) : (
     <div>記事が見つかりませんでした。</div>

@@ -19,7 +19,7 @@ a {
   text-decoration: none;
 }
 
-.flex {
+.flexbox {
   display: flex;
   justify-content: space-between;
   align-items: center;

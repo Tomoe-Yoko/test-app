@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <>
-      <header className="flex">
+      <header className="flexbox">
         <h1>
           <Link to="/">Blog</Link>
         </h1>
