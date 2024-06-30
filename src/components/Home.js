@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import { posts } from "../data/post";
 
 export default function Home() {
-  const [posts, setPosts] = useState("");
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     // 非同期関数を定義
@@ -12,8 +12,8 @@ export default function Home() {
         "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts"
       );
 
-      const { data } = await response.json();
-      setPosts(data);
+      const data = await response.json();
+      setPosts(data.posts);
     };
 
     // 非同期関数を呼び出す
