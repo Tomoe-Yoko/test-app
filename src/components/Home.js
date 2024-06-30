@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Page01 from "./Page01";
 import { posts } from "../data/post";
 
 export default function Home() {
@@ -8,13 +7,22 @@ export default function Home() {
     <>
       <ul>
         {posts.map((post) => (
-          <li key={post.id} className="postwrap">
-            <Link to="/page01">
-              <div className="flex">
+          <li
+            key={post.id}
+            className="w-2/4 my-12 mx-auto p-8 outline outline-1"
+          >
+            <Link to={`/${post.id}`}>
+              {/* //URL */}
+              <div className="flex justify-between items-center">
                 <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-                <div className="categories flex">
+                <div className="flex justify-between items-center">
                   {post.categories.map((category, index) => (
-                    <div key={index}>{category}</div>
+                    <div
+                      key={index}
+                      className="text-sm p-1 text-blue-700 border border-solid border-1 border-blue-700 rounded-md mx-1"
+                    >
+                      {category}
+                    </div>
                   ))}
                 </div>
               </div>
