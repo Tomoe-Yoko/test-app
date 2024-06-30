@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { posts } from "../data/post";
+// import { posts } from "../data/post";
 
 export default function Home() {
+  const [posts, setPosts] = useState("");
+
+  useEffect(() => {
+    // 非同期関数を定義
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts"
+      );
+
+      const { data } = await response.json();
+      setPosts(data);
+    };
+
+    // 非同期関数を呼び出す
+    fetchData();
+  }, []);
+
   return (
     <>
       <ul>

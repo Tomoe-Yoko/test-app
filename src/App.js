@@ -1,7 +1,7 @@
 import React from "react";
 //Router本体をインポート
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Page from "./components/Page";
