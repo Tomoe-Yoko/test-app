@@ -11,10 +11,11 @@ const Page = () => {
   // 指定したIDの記事を取得
   const post = posts.find((p) => p.id === Number(id));
   console.log(id);
-  // if (!post) {
-  //   return <div>記事が見つかりませんでした</div>;
-  // }
-  return post ? (
+  //三項演算子（？）よりも早期リターンを使う！
+  if (!post) {
+    return <div>記事が見つかりませんでした</div>;
+  }
+  return (
     <div className="w-9/12 mx-auto my-10 max-w-screen-md">
       {/* <h2 className="p-6 font-bold text-xl">{post.title}</h2> */}
       <img src={post.thumbnailUrl} alt={post.title} />
@@ -35,8 +36,6 @@ const Page = () => {
       </div>
       <div className="mt-4">{renderContent(post.content)}</div>
     </div>
-  ) : (
-    <div>記事が見つかりませんでした。</div>
   );
 };
 
