@@ -39,31 +39,37 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      //フォームの送信処理をここに記述
-      setSubmitting(true);
-      console.log("送信OK");
 
-      try {
-        const res = await fetch(
-          "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, message }),
-          }
-        );
-        if (res.ok) {
-          alert("送信しました");
-          handleClear();
-        } else {
-          alert("送信に失敗しました");
+    //if文の中にif文を書くのは極力控えた方が良い
+    //早期リターンでネストをわかりやすく
+    if (!validate()) {
+      return;
+    }
+
+    // フォームの送信処理をここに記述
+    setSubmitting(true);
+    console.log("送信OK");
+
+    try {
+      const res = await fetch(
+        "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message }),
         }
-      } catch (error) {
-        alert("送信中にエラーが発生しました");
-      } finally {
-        setSubmitting(false);
+      );
+
+      if (res.ok) {
+        alert("送信しました");
+        handleClear();
+      } else {
+        alert("送信に失敗しました");
       }
+    } catch (error) {
+      alert("送信中にエラーが発生しました");
+    } finally {
+      setSubmitting(false);
     }
   };
   //clearButton
