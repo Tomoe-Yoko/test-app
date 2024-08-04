@@ -8,9 +8,14 @@ export default function Header() {
         <h1>
           <Link to="/">Blog</Link>
         </h1>
-        <p>
-          <Link to="/contact">お問合せ</Link>
-        </p>
+        <div className="flex justify-between w-64 px-4">
+          <p>
+            <Link to="/contact">お問合せ</Link>
+          </p>
+          <p>
+            <Link to="/todo">やること</Link>
+          </p>
+        </div>
       </header>
     </>
   );

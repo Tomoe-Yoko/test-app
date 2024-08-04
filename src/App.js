@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Page from "./components/Page";
 import Contact from "./components/Contact";
+import Todo from "./components/Todo";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<Page />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/Todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   );
