@@ -3,15 +3,32 @@ import React, { useState } from "react";
 const Todo = () => {
   const [inputText, setInputText] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const change = (e) => setInputText(e.target.value);
-  const add = (e) => {
+  const add = () => {
     setTodoList([...todoList, { text: inputText }]);
     setInputText("");
   };
 
   const remove = (index) => {
     setTodoList(todoList.filter((_, i) => i !== index));
+  };
+  const edit = (index) => {
+    setEditIndex(index);
+    setEditText(todoList[index].text);
+  };
+
+  const save = (index) => {
+    const updateTodoList = [...todoList];
+    updateTodoList[index].text = editText;
+    setTodoList(updateTodoList);
+    setEditIndex(null);
+    setEditText("");
+  };
+  const editChange = (e) => {
+    setEditText(e.target.value);
   };
 
   return (
@@ -37,16 +54,28 @@ const Todo = () => {
           <ol>
             {todoList.map((todo, index) => (
               <li key={index} className="flex justify-center mx-auto w-3/4">
-                <div className="w-3/4  my-4 p-4 text-xl bg-blue-300 list-decimal rounded-xl">
-                  {todo.text}
-                </div>
-                <button
-                  onClick={() => remove(index)}
-                  className="p-4 bg-gray-300
+                {editIndex === index ? (
+                  <div className="flex w-full justify-between">
+                    <input type="text" value={editText} onChange={editChange} />
+                    <button onClick={() => save(index)}>保存</button>
+                  </div>
+                ) : (
+                  <div className="flex items-center">
+                    <div className="h-12 pt-4 w-3/4 bg-blue-300">
+                      {todo.text}
+                    </div>
+                    <div className="flex w-3/4 justify-between">
+                      <button onClick={() => edit(index)}>編集</button>
+                      <button
+                        onClick={() => remove(index)}
+                        className="p-4 bg-gray-300
                    text-black m-4 rounded-xl"
-                >
-                  削除
-                </button>
+                      >
+                        削除
+                      </button>
+                    </div>
+                  </div>
+                )}
               </li>
             ))}
           </ol>
