@@ -55,17 +55,35 @@ const Todo = () => {
             {todoList.map((todo, index) => (
               <li key={index} className="flex justify-center mx-auto w-3/4">
                 {editIndex === index ? (
-                  <div className="flex w-full justify-between">
-                    <input type="text" value={editText} onChange={editChange} />
-                    <button onClick={() => save(index)}>保存</button>
+                  <div className="koko flex justify-center w-full">
+                    <input
+                      type="text"
+                      value={editText}
+                      onChange={editChange}
+                      className="
+                    border border-black w-3/4"
+                    />
+                    <button
+                      onClick={() => save(index)}
+                      className="p-4 bg-green-950
+                   text-gray-300 m-4 rounded-xl"
+                    >
+                      保存
+                    </button>
                   </div>
                 ) : (
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-center w-full">
                     <div className="h-12 pt-4 w-3/4 bg-blue-300">
                       {todo.text}
                     </div>
-                    <div className="flex w-3/4 justify-between">
-                      <button onClick={() => edit(index)}>編集</button>
+                    <div className="flex w-1/4 justify-end">
+                      <button
+                        onClick={() => edit(index)}
+                        className="p-4 bg-blue-950
+                   text-gray-300 m-4 rounded-xl"
+                      >
+                        編集
+                      </button>
                       <button
                         onClick={() => remove(index)}
                         className="p-4 bg-gray-300
